@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqo5kpr3orr4c"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_72ncn"]
+[ext_resource type="PackedScene" uid="uid://de1rvliu6fcg5" path="res://Scenes/Character Components/Shared/Velocity Component/Velocity Component.tscn" id="2_86yov"]
+[ext_resource type="PackedScene" uid="uid://be3u5npjfha3s" path="res://Scenes/Character Components/Player Specific/Player Camera/Player Camera.tscn" id="3_sdyw3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uaygb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvs4v"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("VelocityNode")]
+script = ExtResource("1_72ncn")
+VelocityNode = NodePath("Velocity Component")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_uaygb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xvs4v")
+
+[node name="Velocity Component" parent="." instance=ExtResource("2_86yov")]
+MaxSpeed = 1000
+Acceleration = 1500
+Friction = 800
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_sdyw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17238, 0)
+Sensitivity = 0.005
+Limits = 45.0
