@@ -15,7 +15,7 @@ public partial class Player : CharacterBody3D
     }
     private Vector3 HandleInput(double delta){
 		InputVector.X = Input.GetActionStrength("Right") - Input.GetActionStrength("Left");
-		InputVector.Z = Input.GetActionStrength("Forwards") - Input.GetActionStrength("Backwards");
+		InputVector.Z = Input.GetActionStrength("Backwards") - Input.GetActionStrength("Forwards");
 
 		return InputVector;
 	}
